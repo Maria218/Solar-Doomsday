@@ -1,28 +1,13 @@
-const reducer = (accumulator, currentValue) => accumulator + currentValue;
-
 function solution(area) {
-    var squares = []
-  
-    var totalArea = area
+    var squarePanelAreas = [];
     
-    var square = 1
-
-    while (squares.reduce(reducer, 0) < area) {
-        
-        if ((square + 1) ** 2 >= totalArea) {
-            squares.push(square ** 2)
-            
-            totalArea -= square ** 2
-            
-            square = 1
-        }
-
-        else {
-            square += 1
-        }
+    while (area > 0) {
+        var panelSize = Math.trunc(Math.sqrt(area));
+        squarePanelAreas.push(panelSize ** 2);
+        area -= panelSize ** 2;
     }
     
-    console.log(squares);
-}
-
-solution(15324);
+    console.log(squarePanelAreas);
+  }
+  
+solution(169);
